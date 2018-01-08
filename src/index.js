@@ -2,6 +2,7 @@
 
 var data = require('./data');
 const OD = data.OD;
+var AR = data.AR.slice();
 var Alexa = require("alexa-sdk");
 var APP_ID = "amzn1.ask.skill.f5a37364-328c-445a-9990-ade87337a490";
 
@@ -16,17 +17,21 @@ var handlers = {
    },
    'NameIntent': function () {
        this.handler.state = "_DECISION";
-       this.attributes['name'] = slotValue(this.event.request.intent.slots.myname);
+       this.attributes.name = slotValue(this.event.request.intent.slots.myname);
        this.response.speak(`So ${this.attributes['name']}, Alexa will ask you a question, and you have to tell whether it flies or not. You have to respond with a Yes or No. Let's see how many you can answer correctly. Would you like to play?`).listen("Ask for help if not sure what to do!");
        this.emit(":responseReady");
    },
    'QuizIntent': function () {
-       let outputspeech = '<say-as interpret-as="interjection">all righty!</say-as>';
+       let outputspeech = "";
+       if(this.attributes.score == 0){
+           outputspeech += '<say-as interpret-as="interjection">all righty!</say-as>';
+       }
        
-       outputspeech += ` Does ${OD[Math.floor(Math.random() * (OD.length-1))].name} fly?`;
-       
-       
-       
+       if(AR.length > 0 ) {
+            this.attributes.randomizer = Math.floor(Math.random() * (AR.length-1));
+            outputspeech += ` Does ${OD[AR[this.attributes.randomizer]].name} fly?`;
+       }
+
        
        this.response.speak(outputspeech).listen();
        this.emit(":responseReady");
@@ -50,17 +55,43 @@ var handlers = {
 
 var playHandlers = Alexa.CreateStateHandler("_PLAY", {
     'AMAZON.YesIntent': function () {
-        this.emit('QuizIntent');
+        if(OD[AR[this.attributes.randomizer]].fly == "yes"){
+            AR.splice(this.attributes.randomizer,1);
+            this.attributes.score += 1;
+            if(AR.length == 0){
+                this.handler.state = "_DECISION";
+                this.response.speak(`You completed the game and scored ${this.attributes.score} points.`);
+                this.emit(':responseReady');
+            }
+            this.emit('QuizIntent');
+        }
+        this.handler.state = "_DECISION";
+        this.response.speak(`<say-as interpret-as="interjection">argh!</say-as> Wrong Answer. You scored ${this.attributes.score} points.`).listen('Want to play again?');
+        this.emit(':responseReady');
+        
     },
     'AMAZON.NoIntent': function () {
-        this.response.speak('<say-as interpret-as="interjection">argh!</say-as>');
-        this.emit(":responseReady");
+        if(OD[AR[this.attributes.randomizer]].fly == "no"){
+            AR.splice(this.attributes.randomizer,1);
+            this.attributes.score += 1;
+            if(AR.length == 0){
+                this.handler.state = "_DECISION";
+                this.response.speak(`Well done ${this.attributes.name} You completed the game and scored ${this.attributes.score} points.`);
+                this.emit(':responseReady');
+            }
+            this.emit('QuizIntent');
+        }
+        this.handler.state = "_DECISION";
+        this.response.speak(`<say-as interpret-as="interjection">argh!</say-as> Wrong Answer. You score ${this.attributes.score} points.`).listen('Want to play again?');
+        this.emit(':responseReady');
     },
 });
 
 var decisionHandlers = Alexa.CreateStateHandler("_DECISION", {
     'AMAZON.YesIntent': function () {
+        AR = data.AR.slice();
         this.handler.state = "_PLAY";
+        this.attributes.score = 0;
         this.emit('QuizIntent');
     },
     'AMAZON.NoIntent': function () {
