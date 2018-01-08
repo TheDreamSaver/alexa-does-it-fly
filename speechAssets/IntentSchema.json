@@ -1,0 +1,103 @@
+{
+  "languageModel": {
+    "types": [
+      {
+        "name": "AMAZON.US_FIRST_NAME",
+        "values": [
+          {
+            "id": null,
+            "name": {
+              "value": "Ashish",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "Ajay",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "Robb",
+              "synonyms": []
+            }
+          }
+        ]
+      }
+    ],
+    "intents": [
+      {
+        "name": "AMAZON.CancelIntent",
+        "samples": [
+          "cancel"
+        ]
+      },
+      {
+        "name": "AMAZON.HelpIntent",
+        "samples": [
+          "i need help",
+          "help me alexa",
+          "help me",
+          "please help",
+          "help",
+          "alexa help"
+        ]
+      },
+      {
+        "name": "AMAZON.NoIntent",
+        "samples": [
+          "naah",
+          "nope",
+          "No"
+        ]
+      },
+      {
+        "name": "AMAZON.StopIntent",
+        "samples": [
+          "stop"
+        ]
+      },
+      {
+        "name": "AMAZON.YesIntent",
+        "samples": [
+          "yeah",
+          "yup",
+          "Yes"
+        ]
+      },
+      {
+        "name": "NameIntent",
+        "samples": [
+          "{myname}",
+          "My name is {myname}",
+          "The name is {myname}",
+          "I am {myname}"
+        ],
+        "slots": [
+          {
+            "name": "myname",
+            "type": "AMAZON.US_FIRST_NAME"
+          }
+        ]
+      },
+      {
+        "name": "UnhandledIntent",
+        "samples": [
+          "asdsadasdshas",
+          "asjdjads adsjads",
+          "basd basd",
+          "ads gweriwsx adwq",
+          "does they fly",
+          "chidiya udd",
+          "do they fly",
+          "do it flies"
+        ],
+        "slots": []
+      }
+    ],
+    "invocationName": "does it fly"
+  }
+}
