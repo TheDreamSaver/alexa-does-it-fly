@@ -43,4 +43,7 @@ const OD = [
   }
 ];
 
+const AR = Array.from(Array(OD.length).keys());
+
 module.exports.OD = OD;
+module.exports.AR = AR;
