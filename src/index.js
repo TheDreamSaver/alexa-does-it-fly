@@ -27,15 +27,22 @@ var handlers = {
        if(AR.length > 0 ) {
             this.attributes.randomizer = Math.floor(Math.random() * (AR.length-1));
             outputspeech += ` Does ${OD[AR[this.attributes.randomizer]].name} fly?`;
+            var image = {
+                    smallImageUrl: OD[AR[this.attributes.randomizer]].photoSmall,
+                    largeImageUrl: OD[AR[this.attributes.randomizer]].photoBig
+            };
+            var cardTitle = OD[AR[this.attributes.randomizer]].name;
+            var cardContent = OD[AR[this.attributes.randomizer]].fact;
        }
-
+        
+        
        
-       this.response.speak(outputspeech).listen();
+       this.response.speak(outputspeech).listen().cardRenderer(cardTitle, cardContent, image);
        this.emit(":responseReady");
    },
 
     'AMAZON.HelpIntent': function () {
-        this.response.speak("Help").listen(' Say ready!');
+        this.response.speak("Help").listen('Say ready!');
         this.emit(':responseReady');
     },
     'AMAZON.CancelIntent': function () {
@@ -70,13 +77,13 @@ var playHandlers = Alexa.CreateStateHandler("_PLAY", {
             this.attributes.score += 1;
             if(AR.length == 0){
                 this.handler.state = "_DECISION";
-                this.response.speak(`You completed the game and scored ${this.attributes.score} points.`);
+                this.response.speak(`Well done ${this.attributes.name}, You completed the game and scored ${this.attributes.score} points.`);
                 this.emit(':responseReady');
             }
             this.emit('QuizIntent');
         }
         this.handler.state = "_DECISION";
-        this.response.speak(`<say-as interpret-as="interjection">argh!</say-as> Wrong Answer. You scored ${this.attributes.score} points.`).listen('Want to play again?');
+        this.response.speak(`<say-as interpret-as="interjection">argh!</say-as> Wrong Answer. <audio src="${OD[AR[this.attributes.randomizer]].mp3}" /> A ${OD[AR[this.attributes.randomizer]].name} doesn't fly. You scored ${this.attributes.score} points.`).listen('Want to play again?');
         this.emit(':responseReady');
         
     },
@@ -86,13 +93,13 @@ var playHandlers = Alexa.CreateStateHandler("_PLAY", {
             this.attributes.score += 1;
             if(AR.length == 0){
                 this.handler.state = "_DECISION";
-                this.response.speak(`Well done ${this.attributes.name} You completed the game and scored ${this.attributes.score} points.`);
+                this.response.speak(`Well done ${this.attributes.name}, You completed the game and scored ${this.attributes.score} points.`);
                 this.emit(':responseReady');
             }
             this.emit('QuizIntent');
         }
         this.handler.state = "_DECISION";
-        this.response.speak(`<say-as interpret-as="interjection">argh!</say-as> Wrong Answer. You score ${this.attributes.score} points.`).listen('Want to play again?');
+        this.response.speak(`<say-as interpret-as="interjection">argh!</say-as> Wrong Answer. <audio src="${OD[AR[this.attributes.randomizer]].mp3}" /> A ${OD[AR[this.attributes.randomizer]].name} does fly. You scored ${this.attributes.score} points.`).listen('Want to play again?');
         this.emit(':responseReady');
     },
 
@@ -180,7 +187,6 @@ exports.handler = function(event, context, callback) {
 // Set up the Alexa object
 var alexa = Alexa.handler(event, context); 
 alexa.appId = APP_ID;
-
 // Register Handlers
 alexa.registerHandlers(handlers, playHandlers, decisionHandlers); 
 
