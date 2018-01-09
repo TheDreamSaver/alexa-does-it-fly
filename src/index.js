@@ -8,10 +8,6 @@ var APP_ID = "amzn1.ask.skill.f5a37364-328c-445a-9990-ade87337a490";
 
 
 var handlers = {
-    'UnhandledIntent': function () {
-        console.log("Stop called in unhandled");
-        this.emit(':ask', 'I don\'t get it! Try saying Alexa, Open does it fly!', 'I don\'t get it! Try saying Alexa, Open does it fly!');
-    },
    'LaunchRequest': function () {
     this.response.speak('<audio src="https://s3.amazonaws.com/doesitfly/bada_bing_bada_boom._TTH_.mp3"/> Welcome, to Does It Fly? What is your name?').listen("Ask for help if not sure what to do!"); 
     this.emit(":responseReady");
@@ -51,6 +47,18 @@ var handlers = {
         this.response.speak('I may be the one walking away, but you\'re the one that\'s leaving. Goodbye!');
         this.emit(':responseReady');
     },
+    'SessionEndedRequest': function () {
+        console.log("SESSIONENDEDREQUEST");
+        //this.attributes['endedSessionCount'] += 1;
+        this.response.speak("Goodbye!");
+        this.emit(':responseReady');
+    },
+    'Unhandled': function() {
+        console.log("UNHANDLED");
+        const message = 'I don\'t get it! Try saying Alexa, Open does it fly!';
+        this.response.speak(message).listen(message);
+        this.emit(':responseReady');
+    }
 
 };
 
@@ -87,10 +95,6 @@ var playHandlers = Alexa.CreateStateHandler("_PLAY", {
         this.response.speak(`<say-as interpret-as="interjection">argh!</say-as> Wrong Answer. You score ${this.attributes.score} points.`).listen('Want to play again?');
         this.emit(':responseReady');
     },
-    'UnhandledIntent': function () {
-        console.log("Stop called in unhandled");
-        this.emit(':ask', 'I don\'t get it! Try saying Alexa, Open does it fly!', 'I don\'t get it! Try saying Alexa, Open does it fly!');
-    },
 
     'AMAZON.HelpIntent': function () {
         this.response.speak("Help").listen(' Say ready!');
@@ -103,6 +107,18 @@ var playHandlers = Alexa.CreateStateHandler("_PLAY", {
     'AMAZON.StopIntent': function () {
         console.log("Stop Called");
         this.response.speak('I may be the one walking away, but you\'re the one that\'s leaving. Goodbye!');
+        this.emit(':responseReady');
+    },
+    'SessionEndedRequest': function () {
+        console.log("SESSIONENDEDREQUEST");
+        //this.attributes['endedSessionCount'] += 1;
+        this.response.speak("Goodbye!");
+        this.emit(':responseReady');
+    },
+    'Unhandled': function() {
+        console.log("UNHANDLED");
+        const message = 'I don\'t get it! Try saying Alexa, Open does it fly!';
+        this.response.speak(message).listen(message);
         this.emit(':responseReady');
     }
 });
@@ -118,11 +134,6 @@ var decisionHandlers = Alexa.CreateStateHandler("_DECISION", {
         this.response.speak('<say-as interpret-as="interjection">argh!</say-as> We could have had a fun day together!');
         this.emit(":responseReady");
     },
-    'UnhandledIntent': function () {
-        console.log("Stop called in unhandled");
-        this.emit(':ask', 'I don\'t get it! Try saying Alexa, Open does it fly!', 'I don\'t get it! Try saying Alexa, Open does it fly!');
-    },
-
     'AMAZON.HelpIntent': function () {
         this.response.speak("Help").listen(' Say ready!');
         this.emit(':responseReady');
@@ -134,6 +145,18 @@ var decisionHandlers = Alexa.CreateStateHandler("_DECISION", {
     'AMAZON.StopIntent': function () {
         console.log("Stop Called");
         this.response.speak('I may be the one walking away, but you\'re the one that\'s leaving. Goodbye!');
+        this.emit(':responseReady');
+    },
+    'SessionEndedRequest': function () {
+        console.log("SESSIONENDEDREQUEST");
+        //this.attributes['endedSessionCount'] += 1;
+        this.response.speak("Goodbye!");
+        this.emit(':responseReady');
+    },
+    'Unhandled': function() {
+        console.log("UNHANDLED");
+        const message = 'I don\'t get it! Try saying Alexa, Open does it fly!';
+        this.response.speak(message).listen(message);
         this.emit(':responseReady');
     }
 });
