@@ -5,6 +5,7 @@ const OD = [
     photoSmall: "https://s3.amazonaws.com/doesitfly/smallImageUrl/dog.jpg",
     photoBig: "https://s3.amazonaws.com/doesitfly/largeImageUrl/dog.jpg",
     mp3: "https://s3.amazonaws.com/doesitfly/mp3/dog.mp3", 
+    sound: "Woof-Woof",
     fly: "no"
   },
   {
@@ -13,6 +14,7 @@ const OD = [
     photoSmall: "https://s3.amazonaws.com/doesitfly/smallImageUrl/aeroplane.png",
     photoBig: "https://s3.amazonaws.com/doesitfly/largeImageUrl/aeroplane.png",
     mp3: "https://s3.amazonaws.com/doesitfly/mp3/aeroplane.mp3", 
+    sound: "zzzmmm", 
     fly: "yes"
   },
   {
@@ -21,6 +23,7 @@ const OD = [
     photoSmall: "https://s3.amazonaws.com/doesitfly/smallImageUrl/bee.jpg",
     photoBig: "https://s3.amazonaws.com/doesitfly/largeImageUrl/bee.jpg",
     mp3: "https://s3.amazonaws.com/doesitfly/mp3/bee.mp3", 
+    sound: "zzzzzzzz", 
     fly: "yes"
   },
   {
@@ -29,6 +32,7 @@ const OD = [
     photoSmall: "https://s3.amazonaws.com/doesitfly/smallImageUrl/butterfly.jpg",
     photoBig: "https://s3.amazonaws.com/doesitfly/largeImageUrl/butterfly.jpg",
     mp3: "https://s3.amazonaws.com/doesitfly/mp3/butterfly.mp3", 
+    sound: "Wheez-Wheez", 
     fly: "yes"
   },
   {
@@ -37,6 +41,7 @@ const OD = [
     photoSmall: "https://s3.amazonaws.com/doesitfly/smallImageUrl/cat.jpg",
     photoBig: "https://s3.amazonaws.com/doesitfly/largeImageUrl/cat.jpg",
     mp3: "https://s3.amazonaws.com/doesitfly/mp3/cat.mp3", 
+    sound: "Meow-Meow", 
     fly: "no"
   },
   {
@@ -45,6 +50,7 @@ const OD = [
     photoSmall: "https://s3.amazonaws.com/doesitfly/smallImageUrl/crow.jpg",
     photoBig: "https://s3.amazonaws.com/doesitfly/largeImageUrl/crow.jpg",
     mp3: "https://s3.amazonaws.com/doesitfly/mp3/crow.mp3", 
+    sound: "Caw-Caw", 
     fly: "yes"
   },
   {
@@ -53,6 +59,7 @@ const OD = [
     photoSmall: "https://s3.amazonaws.com/doesitfly/smallImageUrl/cheetah.jpg",
     photoBig: "https://s3.amazonaws.com/doesitfly/largeImageUrl/cheetah.jpg",
     mp3: "https://s3.amazonaws.com/doesitfly/mp3/cheetah.mp3", 
+    sound: "Cheep-Cheep", 
     fly: "no"
   },
   {
@@ -61,6 +68,7 @@ const OD = [
     photoSmall: "https://s3.amazonaws.com/doesitfly/smallImageUrl/dove.jpg",
     photoBig: "https://s3.amazonaws.com/doesitfly/largeImageUrl/dove.jpg",
     mp3: "https://s3.amazonaws.com/doesitfly/mp3/dove.mp3", 
+    sound: "Woo-Woo", 
     fly: "yes"
   },
   {
@@ -68,7 +76,8 @@ const OD = [
     fact: "In most eagle species, females are larger and stronger than males. Currently, there are about 60 species of eagles.",
     photoSmall: "https://s3.amazonaws.com/doesitfly/smallImageUrl/eagle.jpg",
     photoBig: "https://s3.amazonaws.com/doesitfly/largeImageUrl/eagle.jpg",
-    mp3: "https://s3.amazonaws.com/doesitfly/mp3/eagle.mp3", 
+    mp3: "https://s3.amazonaws.com/doesitfly/mp3/eagle.mp3",
+    sound: "Keaaw-Keaaw",  
     fly: "yes"
   },
   {
@@ -77,6 +86,7 @@ const OD = [
     photoSmall: "https://s3.amazonaws.com/doesitfly/smallImageUrl/dolphin.jpg",
     photoBig: "https://s3.amazonaws.com/doesitfly/largeImageUrl/dolphin.jpg",
     mp3: "https://s3.amazonaws.com/doesitfly/mp3/dolphin.mp3", 
+    sound: "Click-Click", 
     fly: "no"
   },
   {
@@ -85,6 +95,7 @@ const OD = [
     photoSmall: "https://s3.amazonaws.com/doesitfly/smallImageUrl/elephant.jpg",
     photoBig: "https://s3.amazonaws.com/doesitfly/largeImageUrl/elephant.jpg",
     mp3: "https://s3.amazonaws.com/doesitfly/mp3/elephant.mp3", 
+    sound: "Pawoo", 
     fly: "no"
   },
   {
@@ -93,6 +104,7 @@ const OD = [
     photoSmall: "https://s3.amazonaws.com/doesitfly/smallImageUrl/glider.jpg",
     photoBig: "https://s3.amazonaws.com/doesitfly/largeImageUrl/glider.jpg",
     mp3: "https://s3.amazonaws.com/doesitfly/mp3/glider.mp3", 
+    sound: "Sweeez", 
     fly: "yes"
   },
   {
@@ -101,6 +113,7 @@ const OD = [
     photoSmall: "https://s3.amazonaws.com/doesitfly/smallImageUrl/helicopter.jpg",
     photoBig: "https://s3.amazonaws.com/doesitfly/largeImageUrl/helicopter.jpg",
     mp3: "https://s3.amazonaws.com/doesitfly/mp3/helicopter.mp3", 
+    sound: "Trr-Trr-Trr", 
     fly: "yes"
   },
   {
@@ -109,6 +122,7 @@ const OD = [
     photoSmall: "https://s3.amazonaws.com/doesitfly/smallImageUrl/lion.jpg",
     photoBig: "https://s3.amazonaws.com/doesitfly/largeImageUrl/lion.jpg",
     mp3: "https://s3.amazonaws.com/doesitfly/mp3/lion.mp3", 
+    sound: "Roarrrr", 
     fly: "no"
   },
   {
@@ -117,6 +131,7 @@ const OD = [
     photoSmall: "https://s3.amazonaws.com/doesitfly/smallImageUrl/llama.jpg",
     photoBig: "https://s3.amazonaws.com/doesitfly/largeImageUrl/llama.jpg",
     mp3: "https://s3.amazonaws.com/doesitfly/mp3/llama.mp3", 
+    sound: "Hum-Hum", 
     fly: "no"
   },
   {
@@ -125,6 +140,7 @@ const OD = [
     photoSmall: "https://s3.amazonaws.com/doesitfly/smallImageUrl/swan.jpg",
     photoBig: "https://s3.amazonaws.com/doesitfly/largeImageUrl/swan.jpg",
     mp3: "https://s3.amazonaws.com/doesitfly/mp3/swan.mp3", 
+    sound: "Wou-Wou", 
     fly: "yes"
   },
   {
@@ -133,6 +149,7 @@ const OD = [
     photoSmall: "https://s3.amazonaws.com/doesitfly/smallImageUrl/zebra.jpg",
     photoBig: "https://s3.amazonaws.com/doesitfly/largeImageUrl/zebra.jpg",
     mp3: "https://s3.amazonaws.com/doesitfly/mp3/zebra.mp3", 
+    sound: "Whoa-Whoa", 
     fly: "no"
   },
 ];
