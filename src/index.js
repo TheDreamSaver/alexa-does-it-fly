@@ -42,6 +42,7 @@ var handlers = {
    },
 
     'AMAZON.HelpIntent': function () {
+        this.handler.state = "_DECISION";
         this.response.speak("Alexa will ask you a question, and you have to tell whether it flies or not. You have to respond with a Yes or No. If you are able to answer all of them correctly, you win, else alexa wins. So would you like to play?").listen('Would you like to play?');
         this.emit(':responseReady');
     },
@@ -84,7 +85,7 @@ var playHandlers = Alexa.CreateStateHandler("_PLAY", {
             this.emit('QuizIntent');
         }
         this.handler.state = "_DECISION";
-        let finalSpeech = `<say-as interpret-as="interjection">argh!</say-as> Wrong Answer. <audio src="${OD[AR[this.attributes.randomizer]].mp3}" /> A ${OD[AR[this.attributes.randomizer]].name} doesn't fly.`;
+        let finalSpeech = `<say-as interpret-as="interjection">argh!</say-as> Wrong Answer. <audio src="${OD[AR[this.attributes.randomizer]].mp3}" /> A ${OD[AR[this.attributes.randomizer]].name} doesn't fly. `;
         if(this.attributes.score<=5){
             finalSpeech += `You need to work more on your fauna knowledge ${this.attributes.name}. You got only ${this.attributes.score} correct.`;
         }
@@ -107,7 +108,7 @@ var playHandlers = Alexa.CreateStateHandler("_PLAY", {
             this.emit('QuizIntent');
         }
         this.handler.state = "_DECISION";
-        let finalSpeech = `<say-as interpret-as="interjection">argh!</say-as> Wrong Answer. <audio src="${OD[AR[this.attributes.randomizer]].mp3}" /> A ${OD[AR[this.attributes.randomizer]].name} does fly.`;
+        let finalSpeech = `<say-as interpret-as="interjection">argh!</say-as> Wrong Answer. <audio src="${OD[AR[this.attributes.randomizer]].mp3}" /> A ${OD[AR[this.attributes.randomizer]].name} does fly. `;
         if(this.attributes.score<=5){
             finalSpeech += `You need to work more on your fauna knowledge ${this.attributes.name}. You got only ${this.attributes.score} correct.`;
         }
@@ -119,6 +120,7 @@ var playHandlers = Alexa.CreateStateHandler("_PLAY", {
     },
 
     'AMAZON.HelpIntent': function () {
+        this.handler.state = "_DECISION";
         this.response.speak("Alexa will ask you a question, and you have to tell whether it flies or not. You have to respond with a Yes or No. If you are able to answer all of them correctly, you win, else alexa wins. So would you like to play?").listen('Would you like to play?');
         this.emit(':responseReady');
     },
@@ -153,6 +155,7 @@ var decisionHandlers = Alexa.CreateStateHandler("_DECISION", {
         this.emit(":responseReady");
     },
     'AMAZON.HelpIntent': function () {
+        this.handler.state = "_DECISION";
         this.response.speak("Alexa will ask you a question, and you have to tell whether it flies or not. You have to respond with a Yes or No. If you are able to answer all of them correctly, you win, else alexa wins. So would you like to play?").listen('Would you like to play?');
         this.emit(':responseReady');
     },
