@@ -40,6 +40,26 @@ var handlers = {
        this.response.speak(outputspeech).listen().cardRenderer(cardTitle, cardContent, image);
        this.emit(":responseReady");
    },
+   'SayIntent': function () {
+       this.attributes.animalsays = slotValue(this.event.request.intent.slots.animal);
+       
+       for(let i =0; i<OD.length; i++){
+           if(OD[i].name == this.attributes.animalsays){
+                let says = `The ${OD[i].name} says <audio src="${OD[i].mp3}" />`;
+                let saysimage = {
+                    smallImageUrl: OD[i].photoSmall,
+                    largeImageUrl: OD[i].photoBig
+                };
+                let sayscardTitle = OD[i].name;
+                let sayscardContent = `"${OD[i].sound}" \n\n ${OD[i].fact}`;
+                this.response.speak(says).cardRenderer(sayscardTitle, sayscardContent, saysimage).listen("If you want to play does it fly game, tell me your name.");
+                this.emit(":responseReady");
+           }
+       }
+       let says = "Sorry, that animal is in hiding and we are not able to catch his sound yet. Ask for some other animal's sound or you can play the does it fly game till then. What is your name?";
+       this.response.speak(says).listen("What is your name?");
+       this.emit(":responseReady");
+   },
 
     'AMAZON.HelpIntent': function () {
         this.handler.state = "_DECISION";
@@ -87,10 +107,10 @@ var playHandlers = Alexa.CreateStateHandler("_PLAY", {
         this.handler.state = "_DECISION";
         let finalSpeech = `<say-as interpret-as="interjection">argh!</say-as> Wrong Answer. <audio src="${OD[AR[this.attributes.randomizer]].mp3}" /> A ${OD[AR[this.attributes.randomizer]].name} doesn't fly. `;
         if(this.attributes.score<=5){
-            finalSpeech += `You need to work more on your fauna knowledge ${this.attributes.name}. You got only ${this.attributes.score} correct.`;
+            finalSpeech += `You need to work more on your fauna knowledge, ${this.attributes.name}. You got only ${this.attributes.score} correct.`;
         }
         else {
-            finalSpeech += `You did good ${this.attributes.name}. You got ${this.attributes.score} correct.`;
+            finalSpeech += `You did good, ${this.attributes.name}. You got ${this.attributes.score} correct.`;
         }
         this.response.speak(finalSpeech).listen('Want to play again?');
         this.emit(':responseReady');
@@ -110,14 +130,34 @@ var playHandlers = Alexa.CreateStateHandler("_PLAY", {
         this.handler.state = "_DECISION";
         let finalSpeech = `<say-as interpret-as="interjection">argh!</say-as> Wrong Answer. <audio src="${OD[AR[this.attributes.randomizer]].mp3}" /> A ${OD[AR[this.attributes.randomizer]].name} does fly. `;
         if(this.attributes.score<=5){
-            finalSpeech += `You need to work more on your fauna knowledge ${this.attributes.name}. You got only ${this.attributes.score} correct.`;
+            finalSpeech += `You need to work more on your fauna knowledge, ${this.attributes.name}. You got only ${this.attributes.score} correct.`;
         }
         else {
-            finalSpeech += `You did good ${this.attributes.name}. You got ${this.attributes.score} correct.`;
+            finalSpeech += `You did good, ${this.attributes.name}. You got ${this.attributes.score} correct.`;
         }
         this.response.speak(finalSpeech).listen('Want to play again?');
         this.emit(':responseReady');
     },
+   'SayIntent': function () {
+       this.attributes.animalsays = slotValue(this.event.request.intent.slots.animal);
+       this.handler.state = "_DECISION";
+       for(let i =0; i<OD.length; i++){
+           if(OD[i].name == this.attributes.animalsays){
+                let says = `The ${OD[i].name} says <audio src="${OD[i].mp3}" />`;
+                let saysimage = {
+                    smallImageUrl: OD[i].photoSmall,
+                    largeImageUrl: OD[i].photoBig
+                };
+                let sayscardTitle = OD[i].name;
+                let sayscardContent = `"${OD[i].sound}" \n\n ${OD[i].fact}`;
+                this.response.speak(says).cardRenderer(sayscardTitle, sayscardContent, saysimage).listen("Do you want to continue playing?");
+                this.emit(":responseReady");
+           }
+       }
+       let says = "Sorry, that animal is in hiding and we are not able to catch his sound yet. Ask for some other animal's sound or you can play the does it fly game till then. Do you want to continue playing?";
+       this.response.speak(says).listen("What is your name?");
+       this.emit(":responseReady");
+   },
 
     'AMAZON.HelpIntent': function () {
         this.handler.state = "_DECISION";
@@ -151,9 +191,29 @@ var decisionHandlers = Alexa.CreateStateHandler("_DECISION", {
         this.emit('QuizIntent');
     },
     'AMAZON.NoIntent': function () {
-        this.response.speak('<say-as interpret-as="interjection">argh!</say-as> We could have had a fun day together!');
+        this.response.speak('<say-as interpret-as="interjection">argh!</say-as> We could have had a fun day together! Goodbye!');
         this.emit(":responseReady");
     },
+    'SayIntent': function () {
+       this.attributes.animalsays = slotValue(this.event.request.intent.slots.animal);
+       this.handler.state = "_DECISION";
+       for(let i =0; i<OD.length; i++){
+           if(OD[i].name == this.attributes.animalsays){
+                let says = `The ${OD[i].name} says <audio src="${OD[i].mp3}" />`;
+                let saysimage = {
+                    smallImageUrl: OD[i].photoSmall,
+                    largeImageUrl: OD[i].photoBig
+                };
+                let sayscardTitle = OD[i].name;
+                let sayscardContent = `"${OD[i].sound}" \n\n ${OD[i].fact}`;
+                this.response.speak(says).cardRenderer(sayscardTitle, sayscardContent, saysimage).listen("Do you want to continue playing?");
+                this.emit(":responseReady");
+           }
+       }
+       let says = "Sorry, that animal is in hiding and we are not able to catch his sound yet. Ask for some other animal's sound or you can play the does it fly game till then. Do you want to continue playing?";
+       this.response.speak(says).listen("What is your name?");
+       this.emit(":responseReady");
+   },
     'AMAZON.HelpIntent': function () {
         this.handler.state = "_DECISION";
         this.response.speak("Alexa will ask you a question, and you have to tell whether it flies or not. You have to respond with a Yes or No. If you are able to answer all of them correctly, you win, else alexa wins. So would you like to play?").listen('Would you like to play?');
