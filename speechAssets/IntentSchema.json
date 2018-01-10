@@ -89,6 +89,136 @@
             }
           }
         ]
+      },
+      {
+        "name": "faunaSound",
+        "values": [
+          {
+            "id": null,
+            "name": {
+              "value": "Dog",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "Bee",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "Butterfly",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "Cat",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "Crow",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "Cheetah",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "Dove",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "Eagle",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "Dolphin",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "Elephant",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "Hang Glider",
+              "synonyms": [
+                "Glider"
+              ]
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "Aeroplane",
+              "synonyms": [
+                "Airplane"
+              ]
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "Helicopter",
+              "synonyms": [
+                "Chopper"
+              ]
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "Lion",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "Llama",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "Swan",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "Zebra",
+              "synonyms": []
+            }
+          }
+        ]
       }
     ],
     "intents": [
@@ -160,6 +290,24 @@
           {
             "name": "myname",
             "type": "AMAZON.US_FIRST_NAME"
+          }
+        ]
+      },
+      {
+        "name": "SayIntent",
+        "samples": [
+          "what does {animal} says",
+          "what {animal} says",
+          "{animal} says",
+          "{animal} says what",
+          "what sound does {animal} make",
+          "what sound {animal} makes",
+          "what does the {animal} say"
+        ],
+        "slots": [
+          {
+            "name": "animal",
+            "type": "faunaSound"
           }
         ]
       },
