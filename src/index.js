@@ -9,7 +9,7 @@ var APP_ID = "amzn1.ask.skill.f5a37364-328c-445a-9990-ade87337a490";
 
 var handlers = {
    'LaunchRequest': function () {
-    this.response.speak('<audio src="https://s3.amazonaws.com/doesitfly/bada_bing_bada_boom._TTH_.mp3"/> Welcome, to Does It Fly? What is your name?').listen("Ask for help if not sure what to do!"); 
+    this.response.speak('<audio src="https://s3.amazonaws.com/doesitfly/bada_bing_bada_boom._TTH_.mp3"/> Welcome, to Does It Fly? What is your name?').listen("Can you please tell me your name?"); 
     this.emit(":responseReady");
    },
    'NameIntent': function () {
@@ -42,26 +42,27 @@ var handlers = {
    },
 
     'AMAZON.HelpIntent': function () {
-        this.response.speak("Help").listen('Say ready!');
+        this.response.speak("Alexa will ask you a question, and you have to tell whether it flies or not. You have to respond with a Yes or No. If you are able to answer all of them correctly, you win, else alexa wins. So would you like to play?").listen('Would you like to play?');
         this.emit(':responseReady');
     },
     'AMAZON.CancelIntent': function () {
-        this.response.speak('I may be the one walking away, but you\'re the one that\'s leaving. Goodbye!');
+        this.response.speak('I thought we were having a good time. Goodbye!');
         this.emit(':responseReady');
     },
     'AMAZON.StopIntent': function () {
-        console.log("Stop Called");
-        this.response.speak('I may be the one walking away, but you\'re the one that\'s leaving. Goodbye!');
+        this.response.speak('I thought we were having a good time. Goodbye!');
         this.emit(':responseReady');
     },
     'SessionEndedRequest': function () {
-        console.log("SESSIONENDEDREQUEST");
-        //this.attributes['endedSessionCount'] += 1;
         this.response.speak("Goodbye!");
         this.emit(':responseReady');
     },
     'Unhandled': function() {
-        console.log("UNHANDLED");
+        const message = 'I don\'t get it! Try saying Alexa, Open does it fly!';
+        this.response.speak(message).listen(message);
+        this.emit(':responseReady');
+    },
+    'UnhandledIntent': function() {
         const message = 'I don\'t get it! Try saying Alexa, Open does it fly!';
         this.response.speak(message).listen(message);
         this.emit(':responseReady');
@@ -104,26 +105,22 @@ var playHandlers = Alexa.CreateStateHandler("_PLAY", {
     },
 
     'AMAZON.HelpIntent': function () {
-        this.response.speak("Help").listen(' Say ready!');
+        this.response.speak("Alexa will ask you a question, and you have to tell whether it flies or not. You have to respond with a Yes or No. If you are able to answer all of them correctly, you win, else alexa wins. So would you like to play?").listen('Would you like to play?');
         this.emit(':responseReady');
     },
     'AMAZON.CancelIntent': function () {
-        this.response.speak('I may be the one walking away, but you\'re the one that\'s leaving. Goodbye!');
+        this.response.speak('I thought we were having a good time. Goodbye!!');
         this.emit(':responseReady');
     },
     'AMAZON.StopIntent': function () {
-        console.log("Stop Called");
-        this.response.speak('I may be the one walking away, but you\'re the one that\'s leaving. Goodbye!');
+        this.response.speak('I thought we were having a good time. Goodbye!');
         this.emit(':responseReady');
     },
     'SessionEndedRequest': function () {
-        console.log("SESSIONENDEDREQUEST");
-        //this.attributes['endedSessionCount'] += 1;
         this.response.speak("Goodbye!");
         this.emit(':responseReady');
     },
     'Unhandled': function() {
-        console.log("UNHANDLED");
         const message = 'I don\'t get it! Try saying Alexa, Open does it fly!';
         this.response.speak(message).listen(message);
         this.emit(':responseReady');
@@ -142,26 +139,22 @@ var decisionHandlers = Alexa.CreateStateHandler("_DECISION", {
         this.emit(":responseReady");
     },
     'AMAZON.HelpIntent': function () {
-        this.response.speak("Help").listen(' Say ready!');
+        this.response.speak("Alexa will ask you a question, and you have to tell whether it flies or not. You have to respond with a Yes or No. If you are able to answer all of them correctly, you win, else alexa wins. So would you like to play?").listen('Would you like to play?');
         this.emit(':responseReady');
     },
     'AMAZON.CancelIntent': function () {
-        this.response.speak('I may be the one walking away, but you\'re the one that\'s leaving. Goodbye!');
+        this.response.speak('I thought we were having a good time. Goodbye!');
         this.emit(':responseReady');
     },
     'AMAZON.StopIntent': function () {
-        console.log("Stop Called");
-        this.response.speak('I may be the one walking away, but you\'re the one that\'s leaving. Goodbye!');
+        this.response.speak('I thought we were having a good time. Goodbye!');
         this.emit(':responseReady');
     },
     'SessionEndedRequest': function () {
-        console.log("SESSIONENDEDREQUEST");
-        //this.attributes['endedSessionCount'] += 1;
         this.response.speak("Goodbye!");
         this.emit(':responseReady');
     },
     'Unhandled': function() {
-        console.log("UNHANDLED");
         const message = 'I don\'t get it! Try saying Alexa, Open does it fly!';
         this.response.speak(message).listen(message);
         this.emit(':responseReady');
