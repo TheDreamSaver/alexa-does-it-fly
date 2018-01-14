@@ -30,7 +30,7 @@ To link it with your Amazon Echo Device, go to your [Amazon developer console](h
 
 3. Click on the "Code Editor" item under **Dashboard** on the top left side of the skill builder.
 
-4. In the textfield provided, replace any existing code with the code provided in the `microservices/app/speechAssets/intentSchema.json` and click on "Apply Changes" or "Save Model".
+4. In the textfield provided, replace any existing code with the code provided in the `speechAssets/intentSchema.json` and click on "Apply Changes" or "Save Model".
 
 5. Click on the **Save Model** button, and then click on the **Build Model** button.
 
@@ -48,7 +48,7 @@ To link it with your Amazon Echo Device, go to your [Amazon developer console](h
 
 5. After you create the function, the ARN value appears in the top right corner. Copy this value for now.
 
-6. Scroll down to the field called "Function code", and replace any existing code with the code provided in the `microservices/app/src/index.js`. Also make a new file in the same directory as index.js and name it data.js. Add the code given in `microservices/app/src/data.js` to it.
+6. Scroll down to the field called "Function code", and replace any existing code with the code provided in the `src/index.js`. Also make a new file in the same directory as index.js and name it data.js. Add the code given in `src/data.js` to it.
 
 7. Make sure you've copied the ARN value. The ARN value should be in the top right corner. If you haven't already, copy this value for use in the next section.
 
@@ -66,7 +66,7 @@ To link it with your Amazon Echo Device, go to your [Amazon developer console](h
 
 ## How to use it as a boilerplate?
 
-The source code lies in the `microservices/app/src` directory. 
+The source code lies in the `src` directory. 
 
 You might want to go through the [Alexa Skills Kit](https://github.com/alexa/alexa-skills-kit-sdk-for-nodejs) for further information.
 
