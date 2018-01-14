@@ -4,6 +4,10 @@
 
 This is an alexa skill based on the popular Indian folk game "Chidiya Udd", meaning, Does Bird Fly? with the purpose of helping kids learn which birds & animals can fly. It can also be used a a boilerplate for building other such quiz based alexa skills.
 
+## [Youtube Demo](https://www.youtube.com/watch?v=M23cEWHVkOM)
+
+## [A submission to Alexa Skills Challenge: Kids on Devpost](https://devpost.com/software/does-it-fly-chidiya-udd)
+
 ## How does it work?
 
 ### Workflow
